@@ -29,6 +29,9 @@ DeepSeek would require a small backend provider refactor before they can be used
 See `WINDOWS_SETUP_REQUIREMENTS.txt` for a concise checklist of required tools,
 optional accounts, and environment variables.
 
+If you want to onboard a German-speaking GPT-5.4 coding agent directly inside
+VS Code, use the copy-paste prompt in `VSCODE_GPT54_ONBOARDING_PROMPT_DE.txt`.
+
 ### 1. Create the workspace
 
 Open PowerShell and run:
@@ -48,6 +51,10 @@ git clone https://github.com/<your-user>/clarity-reader.git
 Set-Location C:\dev\clarity-reader-stack\clarity-reader
 code .
 ```
+
+If VS Code is already open in the existing folder `C:\dev\clarity-reader-stack`,
+clone the repository into the `clarity-reader` subfolder and then open that
+repository folder in the Explorer/workspace.
 
 ### 3. Install frontend dependencies
 

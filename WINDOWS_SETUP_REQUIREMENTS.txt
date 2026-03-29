@@ -5,6 +5,8 @@ Workspace
 ---------
 - Create and use: C:\dev\clarity-reader-stack
 - Clone the repository into: C:\dev\clarity-reader-stack\clarity-reader
+- If VS Code is already open in C:\dev\clarity-reader-stack, clone only into the clarity-reader subfolder
+- German GPT-5.4 onboarding prompt: VSCODE_GPT54_ONBOARDING_PROMPT_DE.txt
 
 Install these tools
 -------------------
