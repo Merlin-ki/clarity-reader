@@ -81,7 +81,7 @@ Create `C:\dev\clarity-reader-stack\clarity-reader\.env.local`:
 
 ```env
 NEXT_PUBLIC_SERVER_ORIGIN=http://127.0.0.1:8000/
-NEXT_PUBLIC_COHERE_API_KEY=local-dev-not-used
+NEXT_PUBLIC_COHERE_API_KEY=placeholder-not-required-for-local-dev
 ```
 
 Create `C:\dev\clarity-reader-stack\clarity-reader\backend\.env`:
