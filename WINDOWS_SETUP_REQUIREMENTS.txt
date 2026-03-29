@@ -1,0 +1,56 @@
+Windows 11 setup requirements for Clarity
+=========================================
+
+Workspace
+---------
+- Create and use: C:\dev\clarity-reader-stack
+- Clone the repository into: C:\dev\clarity-reader-stack\clarity-reader
+- If VS Code is already open in C:\dev\clarity-reader-stack, clone only into the clarity-reader subfolder
+- German GPT-5.4 onboarding prompt: VSCODE_GPT54_ONBOARDING_PROMPT_DE.txt
+
+Install these tools
+-------------------
+1. Git for Windows
+2. Visual Studio Code
+3. Node.js 18 LTS (includes npm)
+4. uv
+5. Python 3.10 (installable through uv)
+6. Poetry (install with: uv tool install poetry)
+
+Project services
+----------------
+- Frontend: Next.js
+- Backend: FastAPI
+- Local backend runner: uvicorn
+
+Accounts and keys
+-----------------
+- GitHub account: required for forking the repository
+- OpenAI API key: required for the current backend implementation
+- Cohere account/key: not required for local summarization; only referenced by the current frontend startup code
+- Modal account: not required for local development; only needed for hosted backend deployment
+
+Environment variables to prepare
+--------------------------------
+Root .env.local
+- NEXT_PUBLIC_SERVER_ORIGIN=http://127.0.0.1:8000/
+- NEXT_PUBLIC_COHERE_API_KEY=placeholder-not-required-for-local-dev
+
+Backend .env
+- OPENAI_API_KEY=your_openai_api_key
+
+Important implementation note
+-----------------------------
+- The backend currently calls the OpenAI SDK directly.
+- Gemini or DeepSeek cannot be used without changing the backend provider code first.
+
+Local run commands
+------------------
+Frontend
+- npm install
+- npm run dev
+
+Backend
+- cd backend
+- poetry install
+- poetry run uvicorn pkg.main:app --reload --host 127.0.0.1 --port 8000

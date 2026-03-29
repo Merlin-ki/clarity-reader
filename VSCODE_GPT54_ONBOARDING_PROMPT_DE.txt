@@ -1,0 +1,70 @@
+Deutsche GPT-5.4 Onboarding-Prompt für VS Code
+=============================================
+
+Kopiere den folgenden Prompt direkt in deinen GPT-5.4 Coding-Agent in VS Code:
+
+Du bist GPT 5.4 in VS Code und unterstützt mich beim lokalen Setup und der
+Entwicklung dieses Repositories unter Windows 11.
+
+Wichtige Rahmenbedingungen:
+- VS Code wurde bereits im bestehenden Ordner `C:\dev\clarity-reader-stack` geöffnet.
+- Erstelle **keinen weiteren übergeordneten Ordner**.
+- Das Repository soll als `C:\dev\clarity-reader-stack\clarity-reader` vorliegen.
+- Falls `clarity-reader` noch nicht existiert, klone mein Fork in genau diesen Pfad.
+- Falls das Repository bereits existiert, verwende es weiter und klone nicht erneut.
+- Arbeite schrittweise, überprüfbar und mit klarer Ausgabe pro Schritt.
+
+Deine Aufgaben:
+1. Prüfe zuerst, ob `C:\dev\clarity-reader-stack\clarity-reader` bereits existiert.
+2. Falls nicht, klone mein Fork von GitHub in diesen Ordner:
+   `git clone https://github.com/<mein-user>/clarity-reader.git C:\dev\clarity-reader-stack\clarity-reader`
+3. Öffne bzw. nutze danach ausschließlich das Repository in:
+   `C:\dev\clarity-reader-stack\clarity-reader`
+4. Richte das Projekt lokal ein mit:
+   - Node.js 18 LTS + npm
+   - uv
+   - Python 3.10
+   - Poetry über `uv tool install poetry`
+5. Installiere die Frontend-Abhängigkeiten im Repository-Root mit:
+   - `npm install`
+6. Installiere das Backend mit:
+   - `cd backend`
+   - `poetry env use 3.10`
+   - `poetry install`
+7. Lege diese lokalen Umgebungsdateien an, falls sie fehlen:
+
+   Root-Datei `.env.local`
+   - `NEXT_PUBLIC_SERVER_ORIGIN=http://127.0.0.1:8000/`
+   - `NEXT_PUBLIC_COHERE_API_KEY=placeholder-not-required-for-local-dev`
+
+   Backend-Datei `backend\.env`
+   - `OPENAI_API_KEY=<mein_openai_api_key>`
+
+8. Starte danach beide Dienste lokal:
+   - Backend:
+     `poetry run uvicorn pkg.main:app --reload --host 127.0.0.1 --port 8000`
+   - Frontend:
+     `npm run dev`
+
+9. Prüfe anschließend:
+   - Frontend: `http://127.0.0.1:3000`
+   - Backend: `http://127.0.0.1:8000/ping`
+
+10. Gib mir zum Schluss eine kompakte Abschlussübersicht mit:
+   - verwendeten Pfaden
+   - installierten Tools
+   - angelegten Dateien
+   - gestarteten Befehlen
+   - noch offenen manuellen Schritten
+
+Wichtige technische Hinweise:
+- Dieses Repository nutzt im Frontend Next.js.
+- Das Backend nutzt FastAPI.
+- Die Python-Umgebung soll mit `uv` vorbereitet werden, aber die vorhandenen
+  Backend-Dependencies bleiben über Poetry installiert, weil das Repository
+  bereits `backend/pyproject.toml` und `backend/poetry.lock` verwendet.
+- Modal ist für die lokale Entwicklung nicht erforderlich.
+- Cohere ist für den lokalen Standardablauf nicht erforderlich; der Platzhalter
+  dient nur dazu, dass die aktuelle Frontend-Initialisierung nicht scheitert.
+- Der aktuelle Backend-Code ist direkt auf OpenAI ausgelegt. Gemini oder
+  DeepSeek wären erst nach Backend-Anpassungen nutzbar.
